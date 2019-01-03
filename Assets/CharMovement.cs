@@ -13,18 +13,22 @@ public class CharMovement : MonoBehaviour
     public bool onGround = false;
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
-    public bool canShoot;
-    public float shootSpeed;
+    private bool canShoot = true;
+    public float shootSpeed = 10f;
+    Rigidbody2D theRB;
     public Transform projectile;
+    public Transform shootPoint;
+    private bool facingRight = true;
 
     // Use this for initialization
     void Start()
     {
+        theRB = GetComponent<Rigidbody2D>();
 
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
 
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
@@ -57,22 +61,15 @@ public class CharMovement : MonoBehaviour
 
             }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             Transform proj = Instantiate(projectile);
             proj.transform.position = transform.position;
             proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
 
-            Vector3 screenPoint = Input.mousePosition;
-            Vector3 worldPoint =
-                Camera.main.ScreenToWorldPoint(screenPoint);
-            Vector2 direction = new Vector2(0, 0);
-            direction.y = worldPoint.y - transform.position.y;
-            direction.x = worldPoint.x - transform.position.x;
-            float corner = Mathf.Atan2(direction.y, direction.x);
 
-            proj.gameObject.GetComponent<Projectile>().direction =
-                new Vector2(Mathf.Cos(corner), Mathf.Sin(corner));
+
+
         }
 
         if (speed.x < 0)
