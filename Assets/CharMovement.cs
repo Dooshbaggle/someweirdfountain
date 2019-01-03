@@ -18,7 +18,7 @@ public class CharMovement : MonoBehaviour
     Rigidbody2D theRB;
     public Transform projectile;
     public Transform shootPoint;
-    private bool facingRight = true;
+	private bool facingRight;
 
     // Use this for initialization
     void Start()
@@ -36,12 +36,12 @@ public class CharMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             speed.x = speedX;
-
+			facingRight = true;
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             speed.x = -speedX;
-
+			facingRight = false;
         }
         else
         {
@@ -61,18 +61,7 @@ public class CharMovement : MonoBehaviour
 
             }
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Transform proj = Instantiate(projectile);
-            proj.transform.position = transform.position;
-            proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
-
-
-
-
-        }
-
-        if (speed.x < 0)
+         if (speed.x < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
 
@@ -80,8 +69,26 @@ public class CharMovement : MonoBehaviour
         else if (speed.x > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }   
+
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+           if(facingRight == true)
+		   {
+		        Transform proj = Instantiate(projectile);
+                projectile.transform.position = transform.position;
+                projectile.gameObject.GetComponent<Projectile>().strength = shootSpeed;
+			}else if (facingRight == false)
+			{
+		        Transform proj = Instantiate(projectile);
+	            projectile.transform.position = transform.position;
+                projectile.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
+			}
+
 
         }
+
 
         if (Mathf.Abs(speed.x) > 0.05f)
         {
