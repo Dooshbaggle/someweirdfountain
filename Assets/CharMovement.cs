@@ -46,7 +46,6 @@ public class CharMovement : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-
             if (onGround)
             {
                 speed.y = speedY;
@@ -58,14 +57,14 @@ public class CharMovement : MonoBehaviour
 
             }
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Transform proj= Instantiate(projectile);
+            Transform proj = Instantiate(projectile);
             proj.transform.position = transform.position;
             proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
 
             Vector3 screenPoint = Input.mousePosition;
-            Vector3 worldPoint = 
+            Vector3 worldPoint =
                 Camera.main.ScreenToWorldPoint(screenPoint);
             Vector2 direction = new Vector2(0, 0);
             direction.y = worldPoint.y - transform.position.y;
@@ -81,7 +80,7 @@ public class CharMovement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
 
         }
-        else if (speed.x < 0)
+        else if (speed.x > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
 
@@ -97,6 +96,25 @@ public class CharMovement : MonoBehaviour
         }
         speed.x = Mathf.Lerp(gameObject.GetComponent<Rigidbody2D>().velocity.x, speed.x, Time.deltaTime * inertion);
         gameObject.GetComponent<Rigidbody2D>().velocity = speed;
+
+        if (Mathf.Abs(speed.y) > 0.05f)
+        {
+            gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", true);
+        }
+        else if (onGround)
+        {
+            gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
+        }
+
+        if (Mathf.Abs(speed.y) > 25f)
+        {
+            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", true);
+        }
+        else if (onGround)
+        {
+     
+            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", false);
+        }
     }
 
     public void Die()
