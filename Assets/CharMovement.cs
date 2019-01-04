@@ -77,7 +77,7 @@ public class CharMovement : MonoBehaviour
            if(facingRight == true)
 		   {
 		        Transform proj = Instantiate(projectile);
-                projectile.transform.position = transform.position;
+	            projectile.transform.position = transform.position;
                 projectile.gameObject.GetComponent<Projectile>().strength = shootSpeed;
 			}else if (facingRight == false)
 			{
