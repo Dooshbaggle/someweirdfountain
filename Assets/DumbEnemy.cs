@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class DumbEnemy : MonoBehaviour
 {
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
+	 public void Die()
+	 {
+		 Destroy(gameObject);
+	 }
 }

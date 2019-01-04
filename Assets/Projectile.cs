@@ -20,15 +20,15 @@ public class Projectile : MonoBehaviour {
         if (collision.transform.tag == "Enemy")
         {
             collision.gameObject.GetComponent<DumbEnemy>().Die();
+			Destroy(gameObject);
         }
  
     }
     // Update is called once per frame
-    void Update() {
-
-    {
-        
+    void Update() 
+	{
+       Destroy(gameObject, 2f); 
     }
 }
- }
+ 
 
