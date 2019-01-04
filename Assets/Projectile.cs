@@ -12,8 +12,8 @@ public class Projectile : MonoBehaviour {
         gameObject.GetComponent<Rigidbody2D>().
             AddForce(direction * strength, ForceMode2D.Impulse);
 
-            
-	}
+       
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
