@@ -7,6 +7,6 @@ public class DumbEnemy : MonoBehaviour
 
 	 public void Die()
 	 {
-		 Destroy(gameObject);
+		 Destroy(gameObject, 2f);
 	 }
 }

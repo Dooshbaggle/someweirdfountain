@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
-        {
+        
             if (transform.position.x < leftSide.position.x)
             {
                 whichWay = 1;
@@ -41,10 +41,39 @@ public class EnemyMovement : MonoBehaviour
             speed.x = currentEnemySpeed;
 
             gameObject.GetComponent<Rigidbody2D>().velocity = speed;
-            
+
+         if (speed.x < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
 
         }
+        else if (speed.x > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }   
+
+	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "PlayerProjectiles")
+        {
+            gameObject.GetComponent<Animator>().SetBool("EnemyisDead", true);
+        }else
+		{
+            gameObject.GetComponent<Animator>().SetBool("EnemyisDead", false);		
+		}
+
+		if(collision.transform.tag == "Player")
+		{
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);		
+		}else
+		{
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
+		}
+
     }
+    
 }
 
 
