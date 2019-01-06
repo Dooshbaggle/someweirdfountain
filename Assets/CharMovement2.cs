@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharMovement : MonoBehaviour
+public class CharMovement2 : MonoBehaviour
 {
 
     public float speedX = 5f;
@@ -33,12 +33,12 @@ public class CharMovement : MonoBehaviour
 
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             speed.x = speedX;
 			facingRight = true;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             speed.x = -speedX;
 			facingRight = false;
@@ -49,7 +49,7 @@ public class CharMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             if (onGround)
             {
                 speed.y = speedY;
@@ -72,7 +72,7 @@ public class CharMovement : MonoBehaviour
         }   
 
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.L))
         {
            if(facingRight == true)
 		   {
