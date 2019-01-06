@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
 		if(collision.transform.tag == "Player")
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);		
-		}else
+		}else if(collision.transform.tag != "Player")
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
 		}
