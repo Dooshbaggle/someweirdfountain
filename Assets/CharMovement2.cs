@@ -87,8 +87,30 @@ public class CharMovement2 : MonoBehaviour
 			}
 
 
-        }
 
+        }
+		
+		if(Input.GetKey(KeyCode.L))
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", true);		
+		}
+		else
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", false);	
+		}		
+
+		if(Mathf.Abs(speed.x) > 0.05f && Input.GetKey(KeyCode.L))	
+			{
+                 gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", true);					
+			}
+			else
+			{
+			     gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
+			}
+
+
+
+		
 
         if (Mathf.Abs(speed.x) > 0.05f)
         {
@@ -104,13 +126,14 @@ public class CharMovement2 : MonoBehaviour
         if (Mathf.Abs(speed.y) > 0.05f)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", true);
+            gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", false);
         }
         else if (onGround)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
         }
 
-        if (Mathf.Abs(speed.y) > 25f)
+        if (Mathf.Abs(speed.y) > 30f)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", true);
         }

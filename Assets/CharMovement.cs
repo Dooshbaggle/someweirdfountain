@@ -87,12 +87,15 @@ public class CharMovement : MonoBehaviour
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
-            gameObject.GetComponent<Animator>().SetBool("PlayerisShooting", true);
+            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", true);
 
 
 
 
-        }
+        }else
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", false);		
+		}
 
 
         if (Mathf.Abs(speed.x) > 0.05f)
