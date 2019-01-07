@@ -72,7 +72,7 @@ public class CharMovement2 : MonoBehaviour
         }   
 
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey(KeyCode.L))
         {
            if(facingRight == true)
 		   {

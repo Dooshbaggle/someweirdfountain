@@ -74,8 +74,10 @@ public class CharMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
+
            if(facingRight == true)
 		   {
+
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
@@ -85,6 +87,9 @@ public class CharMovement : MonoBehaviour
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
+            gameObject.GetComponent<Animator>().SetBool("PlayerisShooting", true);
+
+
 
 
         }
