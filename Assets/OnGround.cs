@@ -19,7 +19,7 @@ public class OnGround : MonoBehaviour
     {
         gameObject.GetComponentInParent<CharMovement>().onGround = true;
         gameObject.GetComponentInParent<CharMovement>().jumpNumber =
-            gameObject.GetComponentInParent<CharMovement>().maxJumpNumber;
+        gameObject.GetComponentInParent<CharMovement>().maxJumpNumber;
     }
 
     public void OnTriggerExit2D(Collider2D collision)

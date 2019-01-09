@@ -13,11 +13,9 @@ public class CharMovement2 : MonoBehaviour
     public bool onGround = false;
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
-    private bool canShoot = true;
     public float shootSpeed = 10f;
     Rigidbody2D theRB;
     public Transform projectile;
-    public Transform shootPoint;
 	private bool facingRight;
 
     // Use this for initialization
@@ -64,11 +62,13 @@ public class CharMovement2 : MonoBehaviour
          if (speed.x < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (1.74f, 0f) ;
 
         }
         else if (speed.x > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (-1.601292f, 0f) ;
         }   
 
 
@@ -100,14 +100,22 @@ public class CharMovement2 : MonoBehaviour
 		}		
 
 		if(Mathf.Abs(speed.x) > 0.05f && Input.GetKey(KeyCode.L))	
-			{
-                 gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", true);					
-			}
-			else
-			{
-			     gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
-			}
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", true);					
+		}
+		else
+		{
+	        gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
+		}
 
+        if(Mathf.Abs(speed.y) > 0.05f && Input.GetKey(KeyCode.L))
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", true);					
+		}
+		else
+		{
+	        gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", false);	
+		}
 
 
 		

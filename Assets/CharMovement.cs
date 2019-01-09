@@ -13,11 +13,9 @@ public class CharMovement : MonoBehaviour
     public bool onGround = false;
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
-    private bool canShoot = true;
     public float shootSpeed = 10f;
     Rigidbody2D theRB;
     public Transform projectile;
-    public Transform shootPoint;
 	private bool facingRight;
 
     // Use this for initialization
@@ -64,11 +62,13 @@ public class CharMovement : MonoBehaviour
          if (speed.x < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (1.34f, 0f) ;
 
         }
         else if (speed.x > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (-1.3f, 0f) ;
         }   
 
 

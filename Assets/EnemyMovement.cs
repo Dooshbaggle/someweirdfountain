@@ -56,23 +56,28 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "PlayerProjectiles")
+        if (collision.transform.tag == "PlayerProjectile")
         {
             gameObject.GetComponent<Animator>().SetBool("EnemyisDead", true);
-        }else
-		{
-            gameObject.GetComponent<Animator>().SetBool("EnemyisDead", false);		
-		}
+			enemySpeed = 0;
+        }
 
 		if(collision.transform.tag == "Player")
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);		
-		}else if(collision.transform.tag != "Player")
+		}else
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
 		}
 
     }
+
+    public void Die()
+    {
+	    GetComponent<BoxCollider2D>().size = new Vector2(15.06425f, 0.06f);
+	    GetComponent<BoxCollider2D>().offset = new Vector2(-1.972885f, -6.3f);
+	}
+
     
 }
 

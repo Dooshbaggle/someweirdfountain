@@ -9,11 +9,11 @@ public class EnemyHead : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            transform.parent.parent.GetComponent<DumbEnemy>().Die();
+            transform.parent.parent.GetComponent<EnemyMovement>().Die();
         }
         else if (collision.tag == "GravityObject")
         {
-            transform.parent.parent.GetComponent<DumbEnemy>().Die();
+            transform.parent.parent.GetComponent<EnemyMovement>().Die();
         }
     }
 }
