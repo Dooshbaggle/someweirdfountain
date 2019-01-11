@@ -80,11 +80,13 @@ public class CharMovement : MonoBehaviour
 
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
+				proj.transform.position = new Vector3 (transform.position.x, 8.8f, transform.position.z);
                 proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
 			}else if (facingRight == false)
 			{
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
+				proj.transform.position = new Vector3 (transform.position.x, 8.8f, transform.position.z);
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
             gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", true);

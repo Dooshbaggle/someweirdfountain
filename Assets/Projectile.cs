@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour {
     {
         if (collision.transform.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<DumbEnemy>().Die();
+            collision.gameObject.GetComponent<EnemyMovement>().Die();
 			Destroy(gameObject);
         }
  
