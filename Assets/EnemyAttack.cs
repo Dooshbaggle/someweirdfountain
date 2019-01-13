@@ -8,8 +8,8 @@ public class EnemyAttack : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<CharMovement>().Die();
             collision.gameObject.GetComponent<CharMovement2>().Die();
+            collision.gameObject.GetComponent<CharMovement>().Die();   
         }
 
         if (collision.transform.tag == "PlayerProjectile")

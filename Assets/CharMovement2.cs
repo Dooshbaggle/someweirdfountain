@@ -154,16 +154,7 @@ public class CharMovement2 : MonoBehaviour
 
     public void Die()
     {
-        GameManager.Lives--;
-        Debug.Log("Player has" + GameManager.Lives.ToString() + "lives'");
-        if (GameManager.Lives >= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

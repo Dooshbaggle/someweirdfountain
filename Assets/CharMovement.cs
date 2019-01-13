@@ -71,36 +71,52 @@ public class CharMovement : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (-1.3f, 0f) ;
         }   
 
+		if(Input.GetKeyDown(KeyCode.V) && Mathf.Abs(speed.x) == 0)
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", true);		
+		}else
+		{
+			gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", false);	
+		}
 
         if (Input.GetKeyDown(KeyCode.V))
         {
 
            if(facingRight == true)
 		   {
-
+		   // proj.transform.position = new Vector3 (transform.position.x, 8.8f, transform.position.z); projektil puca iz puske
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
-				proj.transform.position = new Vector3 (transform.position.x, 8.8f, transform.position.z);
                 proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
 			}else if (facingRight == false)
 			{
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
-				proj.transform.position = new Vector3 (transform.position.x, 8.8f, transform.position.z);
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
-            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", true);
 
-
-
-
-        }else
+        }
+		
+		if(Mathf.Abs(speed.x) > 0.05f && Input.GetKeyDown(KeyCode.V))	
 		{
-            gameObject.GetComponent<Animator>().SetBool("PlayerisIdleShooting", false);		
+            gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", true);					
+		}
+		else
+		{
+	        gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
+		}
+
+        if(Mathf.Abs(speed.y) > 0.05f && Input.GetKey(KeyCode.V))
+		{
+            gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", true);					
+		}
+		else
+		{
+	        gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", false);	
 		}
 
 
-        if (Mathf.Abs(speed.x) > 0.05f)
+        if (Mathf.Abs(speed.x) > 0.1f)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", true);
         }
@@ -120,18 +136,18 @@ public class CharMovement : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
         }
 
-        if (Mathf.Abs(speed.y) > 25f)
-        {
-            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", true);
-        }
-        else if (onGround)
-        {
-     
-            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", false);
-        }
+
     }
 
     public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+}
+
+
+/*public void Die()
     {
         GameManager.Lives--;
         Debug.Log("Player has" + GameManager.Lives.ToString() + "lives'");
@@ -145,5 +161,4 @@ public class CharMovement : MonoBehaviour
         }
     }
 
-}
-
+	*/
