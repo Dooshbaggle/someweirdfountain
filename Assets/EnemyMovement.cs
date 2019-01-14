@@ -42,9 +42,10 @@ public class EnemyMovement : MonoBehaviour
 
             gameObject.GetComponent<Rigidbody2D>().velocity = speed;
 
-         if (speed.x < 0)
+        if (speed.x < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (2.5f, -1.028959f) ;
 
         }
         else if (speed.x > 0)
@@ -65,12 +66,14 @@ public class EnemyMovement : MonoBehaviour
 		if(collision.transform.tag == "Player")
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);		
-		}else
-		{
-            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
 		}
 
     }
+
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
+	}
 
     public void Die()
     {

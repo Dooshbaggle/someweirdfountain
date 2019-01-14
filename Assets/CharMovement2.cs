@@ -14,15 +14,13 @@ public class CharMovement2 : MonoBehaviour
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
     public float shootSpeed = 10f;
-    Rigidbody2D theRB;
     public Transform projectile;
 	private bool facingRight;
 
     // Use this for initialization
     void Start()
     {
-        theRB = GetComponent<Rigidbody2D>();
-
+        
     }
 
     // Update is called once per frame
@@ -108,7 +106,7 @@ public class CharMovement2 : MonoBehaviour
 	        gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
 		}
 
-        if(Mathf.Abs(speed.y) > 0.05f && Input.GetKey(KeyCode.L))
+        if(onGround == false && Input.GetKey(KeyCode.L))
 		{
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", true);					
 		}
@@ -131,7 +129,7 @@ public class CharMovement2 : MonoBehaviour
         speed.x = Mathf.Lerp(gameObject.GetComponent<Rigidbody2D>().velocity.x, speed.x, Time.deltaTime * inertion);
         gameObject.GetComponent<Rigidbody2D>().velocity = speed;
 
-        if (Mathf.Abs(speed.y) > 0.05f)
+        if (onGround == false)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", true);
             gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", false);
@@ -141,20 +139,11 @@ public class CharMovement2 : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
         }
 
-        if (Mathf.Abs(speed.y) > 30f)
-        {
-            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", true);
-        }
-        else if (onGround)
-        {
-     
-            gameObject.GetComponent<Animator>().SetBool("PlayerisDoubleJumping", false);
-        }
     }
 
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	Debug.Log("UMRO DRUGI");
     }
 
 }

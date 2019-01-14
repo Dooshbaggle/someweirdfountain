@@ -14,14 +14,12 @@ public class CharMovement : MonoBehaviour
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
     public float shootSpeed = 10f;
-    Rigidbody2D theRB;
     public Transform projectile;
 	private bool facingRight;
 
     // Use this for initialization
     void Start()
     {
-        theRB = GetComponent<Rigidbody2D>();
 
     }
 
@@ -140,12 +138,11 @@ public class CharMovement : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
         }
 
-
     }
 
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("UMRO PRVI");
     }
 
 }
@@ -164,5 +161,18 @@ public class CharMovement : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
     }
+
+		if(code == good)
+		{
+			gameObject.GetComponent<Jovan>().Mood(good);
+		}else if (code != good)
+		{
+			gameObject.GetComponent<Jovan>().Mood(bad);		
+		}
+
+
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 
 	*/

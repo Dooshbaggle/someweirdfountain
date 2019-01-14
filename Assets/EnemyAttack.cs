@@ -8,7 +8,6 @@ public class EnemyAttack : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<CharMovement2>().Die();
             collision.gameObject.GetComponent<CharMovement>().Die();   
         }
 
@@ -18,9 +17,20 @@ public class EnemyAttack : MonoBehaviour {
         }
 
 
-
-
-
-
     }
+     
+	void Update()
+	{
+		if (speed.x < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (2.5f, -1.028959f) ;
+
+        }
+        else if (speed.x > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+	}	
 }
+
