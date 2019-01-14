@@ -97,7 +97,7 @@ public class CharMovement : MonoBehaviour
 
         }
 		
-		if(Mathf.Abs(speed.x) > 0.05f && Input.GetKeyDown(KeyCode.V))	
+		if(Mathf.Abs(speed.x) > 0.05f && Input.GetKeyDown(KeyCode.V) && Mathf.Abs(speed.y) == 0f)	
 		{
             gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", true);					
 		}
@@ -106,7 +106,7 @@ public class CharMovement : MonoBehaviour
 	        gameObject.GetComponent<Animator>().SetBool("PlayerisRunningShooting", false);	
 		}
 
-        if(Mathf.Abs(speed.y) > 0.05f && Input.GetKey(KeyCode.V))
+        if(Mathf.Abs(speed.y) > 0.05f && Input.GetKeyDown(KeyCode.V))
 		{
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumpingShooting", true);					
 		}
@@ -120,10 +120,14 @@ public class CharMovement : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", true);
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.V))
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", false);
         }
+		else
+		{
+		    gameObject.GetComponent<Animator>().SetBool("PlayerisRunning", false);
+		}
         speed.x = Mathf.Lerp(gameObject.GetComponent<Rigidbody2D>().velocity.x, speed.x, Time.deltaTime * inertion);
         gameObject.GetComponent<Rigidbody2D>().velocity = speed;
 
