@@ -19,6 +19,7 @@ public class EnemyAttack : MonoBehaviour {
 
     }
      
+/*
 	void Update()
 	{
 		if (speed.x < 0)
@@ -32,5 +33,7 @@ public class EnemyAttack : MonoBehaviour {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 	}	
+*/
+
 }
 
