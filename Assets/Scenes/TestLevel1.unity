@@ -866,12 +866,12 @@ PrefabInstance:
     - target: {fileID: 5835479042040424831, guid: 3b3082060b380fd47be2ec05fa0cc30f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99.6
+      value: -126.7
       objectReference: {fileID: 0}
     - target: {fileID: 5835479042040424831, guid: 3b3082060b380fd47be2ec05fa0cc30f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.6
+      value: 26.9
       objectReference: {fileID: 0}
     - target: {fileID: 5835479042040424831, guid: 3b3082060b380fd47be2ec05fa0cc30f,
         type: 3}
@@ -992,6 +992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831575777558450995, guid: 3b3082060b380fd47be2ec05fa0cc30f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 5835479042040424831, guid: 3b3082060b380fd47be2ec05fa0cc30f,
         type: 3}
@@ -1227,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1348588180648824, guid: c1eab9b1c1d82294e9277ab6e898f5d7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4331556262768436, guid: c1eab9b1c1d82294e9277ab6e898f5d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.9
@@ -1442,7 +1451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5006430711354814981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.4, y: -91.7, z: 0}
+  m_LocalPosition: {x: -75.02, y: -91.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5002492930646237361}
@@ -1456,7 +1465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005844933186254017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.6, y: -93.5, z: 0}
+  m_LocalPosition: {x: 20.1, y: -93.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5002492930646237361}
@@ -1490,9 +1499,10 @@ GameObject:
   - component: {fileID: 5028737412334574019}
   - component: {fileID: 5005821364765540253}
   - component: {fileID: 5005821364765540252}
-  m_Layer: 0
+  - component: {fileID: 5005821364765540254}
+  m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1533,6 +1543,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5005821364765540254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005821364765540251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b491967ac5e1cd04aad866ad26f990fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1426848114}
+  range: 50
+  bulletImpulse: 20
+  projectile: {fileID: 1341688100, guid: ecf6650b88c011d4892b1d333fbd2c9f, type: 3}
 --- !u!1 &5005844933186254017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5002492930646237361}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DumbEnemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
