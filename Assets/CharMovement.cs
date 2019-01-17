@@ -16,11 +16,12 @@ public class CharMovement : MonoBehaviour
     public float shootSpeed = 10f;
     public Transform projectile;
 	private bool facingRight;
+    Animator m_Animator;
 
     // Use this for initialization
     void Start()
     {
-
+        m_Animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -137,6 +138,25 @@ public class CharMovement : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
         }
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            gameObject.GetComponent<Animator>().SetBool("PlayerisUsingAbility", true);
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("PlayerisUsingAbility", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            m_Animator.SetTrigger("Ability");
+   
+        }
+
+         
+
+
 
     }
 
