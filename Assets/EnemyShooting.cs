@@ -26,7 +26,6 @@ public class EnemyShooting : MonoBehaviour
 
             Rigidbody2D bullet = (Rigidbody2D)Instantiate(projectile, transform.position + transform.forward, transform.rotation);
             bullet.AddForce(transform.forward * bulletImpulse, ForceMode2D.Impulse);
-            Debug.Log("MRS");
             Destroy(bullet.gameObject, 2);
         }
 
@@ -36,7 +35,7 @@ public class EnemyShooting : MonoBehaviour
     void Update()
     {
 
-        onRange = Vector3.Distance(transform.position, player.position) < range;
+        onRange = Vector2.Distance(transform.position, player.position) < range;
 
         if (onRange)
             transform.LookAt(player);
@@ -44,3 +43,4 @@ public class EnemyShooting : MonoBehaviour
 
 
 }
+
