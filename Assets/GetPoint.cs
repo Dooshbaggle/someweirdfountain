@@ -11,5 +11,12 @@ public class GetPoint : MonoBehaviour {
             GameManager.Points++;
             Destroy(gameObject);
         }
+        else if (collision.transform.tag == "Player1")
+        {
+            GameManager.Points2++;
+            Destroy(gameObject);
+        }
+
+
     }
 }

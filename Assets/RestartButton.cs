@@ -27,7 +27,7 @@ public class RestartButton : MonoBehaviour {
 
     private void ButtonPressed()
     {
-        GameManager.Lives = 3;
+//        GameManager.Lives = 3;
         GameManager.Points = 0;
 
         SceneManager.LoadScene(levelName);

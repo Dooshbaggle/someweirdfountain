@@ -12,7 +12,7 @@ public class LifeCounter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Text>().text =
-            GameManager.Lives.ToString();
+ //       gameObject.GetComponent<Text>().text =
+ //           GameManager.Lives.ToString();
 	}
 }

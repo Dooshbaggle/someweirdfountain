@@ -8,6 +8,7 @@ public class CharMovement : MonoBehaviour
 
     public float speedX = 5f;
     public float speedY = 20f;
+    public float abilitySpeed = 50f;
     public float inertion = 1f;
     private Vector2 speed = new Vector2(0f, 0f);
     public bool onGround = false;
@@ -30,12 +31,12 @@ public class CharMovement : MonoBehaviour
 
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             speed.x = speedX;
 			facingRight = true;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             speed.x = -speedX;
 			facingRight = false;
@@ -137,26 +138,21 @@ public class CharMovement : MonoBehaviour
         else if (onGround)
         {
             gameObject.GetComponent<Animator>().SetBool("PlayerisJumping", false);
-        }
+        }     
 
-        if(Input.GetKeyDown(KeyCode.B))
+        if (GameManager.abilityTrue == true)
         {
-            gameObject.GetComponent<Animator>().SetBool("PlayerisUsingAbility", true);
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                m_Animator.SetTrigger("Ability");
+                GameManager.Points -= 1;
+            }
+
+
+
+
+
         }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetBool("PlayerisUsingAbility", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            m_Animator.SetTrigger("Ability");
-   
-        }
-
-         
-
-
 
     }
 
