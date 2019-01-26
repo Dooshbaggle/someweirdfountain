@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class GetPoint : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player")
         {
             GameManager.Points++;
-            Destroy(gameObject);
+            SoundManager.PlaySound("garand");
+
         }
         else if (collision.transform.tag == "Player1")
         {
             GameManager.Points2++;
+            SoundManager.PlaySound("garand");
             Destroy(gameObject);
         }
 

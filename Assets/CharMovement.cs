@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class CharMovement : MonoBehaviour
 {
@@ -31,12 +32,13 @@ public class CharMovement : MonoBehaviour
 
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             speed.x = speedX;
 			facingRight = true;
+            SoundManager.PlaySound("garand");
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             speed.x = -speedX;
 			facingRight = false;
@@ -148,7 +150,15 @@ public class CharMovement : MonoBehaviour
                 GameManager.Points -= 1;
             }
 
-
+            if(Input.GetKey(KeyCode.A))
+            {
+               
+                speed.x = -abilitySpeed;
+            }
+            else if(Input.GetKeyDown(KeyCode.D))
+            {
+                speed.x = abilitySpeed;
+            }
 
 
 

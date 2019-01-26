@@ -10,7 +10,7 @@ public class EnemyShooting : MonoBehaviour
 
     private bool onRange = false;
 
-    public Rigidbody2D projectile;
+    public Transform projectile;
 
     void Start()
     {
@@ -24,8 +24,9 @@ public class EnemyShooting : MonoBehaviour
         if (onRange)
         {
 
-            Rigidbody2D bullet = (Rigidbody2D)Instantiate(projectile, transform.position + transform.forward, transform.rotation);
-            bullet.AddForce(transform.forward * bulletImpulse, ForceMode2D.Impulse);
+            Transform bullet = Instantiate(projectile);
+            projectile.transform.position = transform.position;
+            projectile.gameObject.GetComponent<Projectile>().strength = bulletImpulse;
             Destroy(bullet.gameObject, 2);
         }
 
@@ -43,4 +44,3 @@ public class EnemyShooting : MonoBehaviour
 
 
 }
-

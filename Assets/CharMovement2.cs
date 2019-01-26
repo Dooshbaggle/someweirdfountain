@@ -84,8 +84,6 @@ public class CharMovement2 : MonoBehaviour
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
 
-
-
         }
 		
 		if(Input.GetKey(KeyCode.L))
@@ -143,7 +141,7 @@ public class CharMovement2 : MonoBehaviour
 
     public void Die()
     {
-	Debug.Log("UMRO DRUGI");
+	    Debug.Log("UMRO DRUGI");
     }
 
 }
