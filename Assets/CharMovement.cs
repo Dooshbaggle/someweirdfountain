@@ -95,6 +95,10 @@ public class CharMovement : MonoBehaviour
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
 
         }
 		
