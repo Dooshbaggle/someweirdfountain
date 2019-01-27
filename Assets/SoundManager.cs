@@ -16,16 +16,17 @@ public class SoundManager : MonoBehaviour
         fireSound1 = Resources.Load<AudioClip>("");
         fireSound2 = Resources.Load<AudioClip>("");
         enemyFireSound = Resources.Load<AudioClip>("");
-        getPointClip = Resources.Load<AudioClip>("garand");
-
-        audioSrc = GetComponent<AudioSource>();
+        getPointClip = Resources.Load<AudioClip>("songg.mp3");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
+        audioSrc = GetComponent<AudioSource>();
+
     }
 
     public static void PlaySound (string clip)
@@ -50,7 +51,7 @@ public class SoundManager : MonoBehaviour
             case "fire":
                 audioSrc.PlayOneShot(enemyFireSound);
                 break; */
-            case "garand":
+            case "songg.mp3":
                 audioSrc.PlayOneShot(getPointClip);
                 Debug.Log("PUCAJ");
                 break;

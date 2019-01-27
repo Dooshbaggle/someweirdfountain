@@ -36,7 +36,6 @@ public class CharMovement : MonoBehaviour
         {
             speed.x = speedX;
 			facingRight = true;
-            SoundManager.PlaySound("garand");
         }
         else if (Input.GetKey(KeyCode.A))
         {

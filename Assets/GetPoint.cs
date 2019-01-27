@@ -9,13 +9,13 @@ public class GetPoint : MonoBehaviour {
         if (collision.transform.tag == "Player")
         {
             GameManager.Points++;
-            SoundManager.PlaySound("garand");
+            SoundManager.PlaySound("songg.mp3");
 
         }
         else if (collision.transform.tag == "Player1")
         {
             GameManager.Points2++;
-            SoundManager.PlaySound("garand");
+            SoundManager.PlaySound("songg.mp3");
             Destroy(gameObject);
         }
 
