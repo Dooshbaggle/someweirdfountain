@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollowsPlayer : MonoBehaviour {
 
-    public Transform followObject;
+    public Transform Player1;
     public float offsetX = 0f;
     public float offsetY = 0f;
     public float deadZoneX = 0f;
@@ -19,10 +19,10 @@ public class CameraFollowsPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if(followObject!=null)
+        if(Player1!=null)
         {
-            float newX = followObject.position.x + offsetX;
-            float newY = followObject.position.y + offsetY;
+            float newX = Player1.position.x + offsetX;
+            float newY = Player1.position.y + offsetY;
             if (Mathf.Abs(transform.position.x - newX) < deadZoneX)
             {
                 newX = transform.position.x;

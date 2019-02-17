@@ -15,13 +15,18 @@ public class GetPoint : MonoBehaviour {
             clip = gameObject.GetComponent<AudioSource>().clip;
             GameObject.Find("AudioManager").GetComponent<AudioSource>().clip = clip;
             GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
+            Destroy(gameObject, 0.01f);
 
         }
         else if (collision.transform.tag == "Player1")
         {
             GameManager.Points2++;
- //           SoundManager.PlaySound("songg.mp3");
-            Destroy(gameObject);
+            //           SoundManager.PlaySound("songg.mp3");
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
+            Destroy(gameObject, 0.01f);
         }
 
 

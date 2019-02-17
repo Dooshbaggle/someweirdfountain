@@ -11,14 +11,16 @@ public class CharMovement : MonoBehaviour
     public float speedY = 20f;
     public float abilitySpeed = 50f;
     public float inertion = 1f;
-    private Vector2 speed = new Vector2(0f, 0f);
+    public Vector2 speed = new Vector2(0f, 0f);
     public bool onGround = false;
     public int jumpNumber = 1;
     public int maxJumpNumber = 1;
     public float shootSpeed = 10f;
     public Transform projectile;
 	private bool facingRight;
+    public bool dead;
     Animator m_Animator;
+    public Transform deadBody;
 
     // Use this for initialization
     void Start()
@@ -152,17 +154,19 @@ public class CharMovement : MonoBehaviour
                 m_Animator.SetTrigger("Ability");
                 GameManager.Points -= 1;
             }
+            else
+            {
+                m_Animator.ResetTrigger("Ability");
+            }
 
             if(Input.GetKey(KeyCode.A))
             {
-               
                 speed.x = -abilitySpeed;
             }
             else if(Input.GetKeyDown(KeyCode.D))
             {
                 speed.x = abilitySpeed;
             }
-
 
 
         }
@@ -172,6 +176,13 @@ public class CharMovement : MonoBehaviour
     public void Die()
     {
         Debug.Log("UMRO PRVI");
+        dead = true;
+
+        Transform dB = Instantiate(deadBody);
+        dB.transform.position = transform.position;
+
+
+        Destroy(gameObject);
     }
 
 }

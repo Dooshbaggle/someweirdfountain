@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - Player1
+  - Tilemap1
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - PlayerProjectiles
   - EnemyProjectiles
   - Enemies
-  - 
+  - DeadBody
   - 
   - 
   - 

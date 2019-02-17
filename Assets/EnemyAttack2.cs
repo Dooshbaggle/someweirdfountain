@@ -7,7 +7,7 @@ public class EnemyAttack2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player1")
         {
             collision.gameObject.GetComponent<CharMovement2>().Die();   
         }

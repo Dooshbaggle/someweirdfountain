@@ -6,7 +6,7 @@ public class EnemyShooting : MonoBehaviour
 {
     public Transform player;
     public float range = 50.0f;
-    public float bulletImpulse = 20.0f;
+    public float bulletImpulse = 20f;
 
     private bool onRange = false;
 
@@ -21,15 +21,33 @@ public class EnemyShooting : MonoBehaviour
     void Shoot()
     {
 
-        if (onRange)
+        if (onRange && player != null && transform.position.x < player.position.x) // y koordinata ne valja
         {
 
-            Transform bullet = Instantiate(projectile);
-            projectile.transform.position = transform.position;
-            projectile.gameObject.GetComponent<Projectile>().strength = bulletImpulse;
-            Destroy(bullet.gameObject, 2);
+            Transform proj = Instantiate(projectile);
+            proj.transform.position = transform.position;
+            proj.gameObject.GetComponent<Projectile>().strength = bulletImpulse;
+            Destroy(proj.gameObject, 2);
+
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager3").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager3").GetComponent<AudioSource>().Play();
         }
 
+        else if (onRange && player != null && transform.position.x > player.position.x)
+        {
+
+            Transform proj = Instantiate(projectile);
+            proj.transform.position = transform.position;
+            proj.gameObject.GetComponent<Projectile>().strength = -bulletImpulse;
+            Destroy(proj.gameObject, 2);
+
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager3").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager3").GetComponent<AudioSource>().Play();
+        }
 
     }
 
@@ -38,8 +56,16 @@ public class EnemyShooting : MonoBehaviour
 
         onRange = Vector2.Distance(transform.position, player.position) < range;
 
-        if (onRange)
-            transform.LookAt(player);
+        if (onRange && transform.position.x > player.position.x)
+        {
+            GetComponent<EnemyMovement2>().whichWay = -1;
+        }
+        else if (onRange && transform.position.x < player.position.x)
+        {
+            GetComponent<EnemyMovement2>().whichWay = 1;
+        }
+
+
     }
 
 

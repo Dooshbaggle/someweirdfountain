@@ -65,20 +65,40 @@ public class EnemyMovement : MonoBehaviour
 
 		if(collision.transform.tag == "Player")
 		{
-            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);		
-		}
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager2").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager2").GetComponent<AudioSource>().Play();
+            whichWay = 1;
+        }
+        else if (collision.transform.tag != "Player")
+        {
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);
+        }
+
+        if (collision.transform.tag == "Player1")
+        {
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager2").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager2").GetComponent<AudioSource>().Play();
+        }
+        else if (collision.transform.tag != "Player1")
+        {
+            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);
+        }
 
     }
 
-	private void OnCollisionExit2D(Collision2D collision)
-	{
-            gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);		
-	}
+
 
     public void Die()
     {
-	    GetComponent<BoxCollider2D>().size = new Vector2(15.06425f, 0.06f);
-	    GetComponent<BoxCollider2D>().offset = new Vector2(-1.972885f, -6.3f);
+        Destroy(GetComponent<BoxCollider2D>());
+        Destroy(GetComponent<AudioSource>());
+        GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 	}
 
     

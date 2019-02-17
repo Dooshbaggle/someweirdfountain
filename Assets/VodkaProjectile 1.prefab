@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4979928723998681217}
   - component: {fileID: 1341688100}
   - component: {fileID: 1341688099}
+  - component: {fileID: 5074754362014169425}
   m_Layer: 9
   m_Name: VodkaProjectile 1
   m_TagString: PlayerProjectile
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0}
   strength: 50
+--- !u!114 &5074754362014169425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341688098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23374614f8c46ef49b208b2a7b4996c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapGameObject: {fileID: 3446867712153771926, guid: df0e95ecd1ce470459316149b67017de,
+    type: 3}

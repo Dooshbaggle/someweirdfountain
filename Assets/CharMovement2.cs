@@ -16,6 +16,8 @@ public class CharMovement2 : MonoBehaviour
     public float shootSpeed = 10f;
     public Transform projectile;
 	private bool facingRight;
+    public bool dead2;
+    public Transform deadBody;
 
     // Use this for initialization
     void Start()
@@ -74,6 +76,7 @@ public class CharMovement2 : MonoBehaviour
         {
            if(facingRight == true)
 		   {
+
 		        Transform proj = Instantiate(projectile);
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = shootSpeed;
@@ -83,6 +86,10 @@ public class CharMovement2 : MonoBehaviour
 	            proj.transform.position = transform.position;
                 proj.gameObject.GetComponent<Projectile>().strength = -shootSpeed;
 			}
+            AudioClip clip;
+            clip = gameObject.GetComponent<AudioSource>().clip;
+            GameObject.Find("AudioManager1").GetComponent<AudioSource>().clip = clip;
+            GameObject.Find("AudioManager1").GetComponent<AudioSource>().Play();
 
         }
 		
@@ -142,6 +149,12 @@ public class CharMovement2 : MonoBehaviour
     public void Die()
     {
 	    Debug.Log("UMRO DRUGI");
+        dead2 = true;
+
+        Transform dB = Instantiate(deadBody);
+        dB.transform.position = transform.position;
+
+        Destroy(gameObject);
     }
 
 }

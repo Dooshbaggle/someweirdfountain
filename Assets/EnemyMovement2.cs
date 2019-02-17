@@ -24,9 +24,9 @@ public class EnemyMovement2 : MonoBehaviour
     {
         speed = gameObject.GetComponent<Rigidbody2D>().velocity;
         
-            if (transform.position.x < leftSide.position.x)
-            {
-                whichWay = 1;
+            if (transform.position.x < leftSide.position.x) //   i ako nije on range, inace ako je transform.position.x < leftSide.position.x i jeste on range 
+            {                                               // onda currentEnemySpeed = currentEnemySpeed + speedUp * Time.deltaTime;
+            whichWay = 1;
             }
             else if (transform.position.x > rightSide.position.x)
             {
@@ -77,8 +77,9 @@ public class EnemyMovement2 : MonoBehaviour
 
     public void Die()
     {
-	    GetComponent<BoxCollider2D>().size = new Vector2(5.217395f, 0.06f);
-	    GetComponent<BoxCollider2D>().offset = new Vector2(1.52f, -4.71f);
+        //   GetComponent<BoxCollider2D>().size = new Vector2(5.217395f, 0.06f);
+        //    GetComponent<BoxCollider2D>().offset = new Vector2(1.52f, -4.71f);
+        Destroy(gameObject);
 	}
 
 }
