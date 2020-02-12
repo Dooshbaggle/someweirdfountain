@@ -63,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
 			enemySpeed = 0;
         }
 
-		if(collision.transform.tag == "Player")
+		if(collision.transform.CompareTag("Player"))
 		{
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", true);
             AudioClip clip;
@@ -72,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
             GameObject.Find("AudioManager2").GetComponent<AudioSource>().Play();
             whichWay = 1;
         }
-        else if (collision.transform.tag != "Player")
+        else if (!collision.transform.CompareTag("Player"))
         {
             gameObject.GetComponent<Animator>().SetBool("EnemyisAttacking", false);
         }
